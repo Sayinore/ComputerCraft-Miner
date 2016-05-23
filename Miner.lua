@@ -1,13 +1,13 @@
 --var define area start
-id = Miner1
-times = 10
+times = read()
 notore = 7 --number of non-mineral block
 torch = 1
 	--var calculate area start
 	local selectNum = 16 - notore + 1 --first select lattice
 	local compareTimes = notore
 	hbtimes = times --have been go forward times
-	--var area end
+	--var calculate area end	
+--var area end
 
 --function area start
 	--[[notes of var "side" in function go(),compare(),dig():
@@ -103,6 +103,27 @@ function compare(side)
 		
 		turtle.turnRight()
 		return false
+	end
+	
+	if side == 2 then
+		turtle.turnLeft()
+		turtle.turnLeft()
+		
+		if turtle.forward() then
+			turtle.back()
+			turtle.turnRight()
+			turtle.turnRight()
+			return true
+		end
+		
+		for i = selectNum, 16 do
+			turtle.select(i)
+			if turtle.compare() then
+				turtle.turnRight()
+				turtle.turnRight()
+				return true
+			end
+		end
 	end
 
 	if side == 3 then
@@ -214,6 +235,15 @@ function dfs(side)
 			go(3)
 		end
 		
+		if compare(2) == false then
+			dig(2)
+			go(2)
+			dfs(0)
+			dfs(1)
+			dfs(2)
+			go(0)
+		end
+		
 		if compare(3) == false then
 			dig(3)
 			go(3)
@@ -258,7 +288,7 @@ function alert(message)
 end
 --function area end
 
-while true do
+for i = 1, 1 do
 	alert("Starting mining...")
 
 	for i = 1, times do
