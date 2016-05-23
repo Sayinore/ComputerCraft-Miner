@@ -1,11 +1,9 @@
 --var define area start
-times = read()
 notore = 7 --number of non-mineral block
 torch = 1
 	--var calculate area start
 	local selectNum = 16 - notore + 1 --first select lattice
 	local compareTimes = notore
-	hbtimes = times --have been go forward times
 	--var calculate area end	
 --var area end
 
@@ -18,6 +16,13 @@ torch = 1
 		0:around	1:up	2:down
 
 	]]
+
+--get distance
+print("How long do you want the miner to go? (unit:block(s))")
+times = read()
+hbtimes = times --have been go forward times
+--end
+	
 function go(side)
 	if side == 0 then
 		while not turtle.forward() do
