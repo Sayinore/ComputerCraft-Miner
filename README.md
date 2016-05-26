@@ -2,8 +2,8 @@
 Lua programs in ComputerCraft  
 
 #Notice
-Your ComputerCraft mod version must be over v1.64  
-Make sure that your turtles has fuels  
+Your ComputerCraft mod version must be over v1.64.  
+Make sure that your turtles has fuels.  
 
 #Useage
 ##Miner
