@@ -14,7 +14,6 @@ torch = 1
 		
 		notes of var "side" in function dfs():
 		0:around	1:up	2:down
-
 	]]
 
 --get distance
@@ -129,6 +128,10 @@ function compare(side)
 				return true
 			end
 		end
+		
+		turtle.turnRight()
+		turtle.turnRight()
+		return false
 	end
 
 	if side == 3 then
@@ -163,7 +166,6 @@ function compare(side)
 			if turtle.compareUp() then
 				return true
 			end
-
 		end
 		
 		return false
@@ -228,6 +230,7 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
+
 			go(2)
 		end
 		
@@ -237,6 +240,7 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
+
 			go(3)
 		end
 		
@@ -246,6 +250,7 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
+
 			go(0)
 		end
 		
@@ -255,6 +260,7 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
+
 			go(1)
 		end
 	end
@@ -280,9 +286,8 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
-			
+
 			go(4)
-			
 		end
 	end
 end
@@ -301,6 +306,7 @@ for i = 1, 1 do
 		go(0)
 		dig(4)
 		dfs(0)
+		dfs(2)
 	end
 
 	alert("Start backing...")
@@ -315,8 +321,9 @@ for i = 1, 1 do
 	for i = 1, hbtimes do
 		go(0)
 		dfs(0)
+		dfs(1)
 	
-		if i%10 == 0 then
+		if i%8 == 0 then
 			turtle.select(torch)
 			turtle.placeDown()
 		end
