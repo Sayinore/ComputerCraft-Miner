@@ -1,14 +1,16 @@
-# Computer-Craft
-Code for Computer-Craft-Mod in Minecraft
+#Computer-Craft
+Lua programs in ComputerCraft  
+
+#Notice
+Your ComputerCraft mod version must be over v1.64  
+Make sure that your turtles has fuels  
 
 #Useage
 ##Miner
 How to put items:
 
-| Number of Grid | Item Name | Remarks |
-| :-----------------: | :----------------: | :-------------------: |
-| 1                   |Torch               | Must over 10          |
-| 16,15,14,13,12,11   |Non-mineral block   | e.g. dirt,stone,etc   |
+| Number of Grid | Item Name |
+| :-----------------: | :----------------: |
+| 1                   |Torch               |
 
-Make sure that your mining-turtle has fuels. <3  
-Enjoy it!
+Make sure that your mining-turtle has a wireless modem.
