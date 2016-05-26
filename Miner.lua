@@ -1,26 +1,30 @@
---var define area start
-notore = 7 --number of non-mineral block
+--var or array define area start
 torch = 1
-	--var calculate area start
-	local selectNum = 16 - notore + 1 --first select lattice
-	local compareTimes = notore
-	--var calculate area end	
---var area end
-
---function area start
-	--[[notes of var "side" in function go(),compare(),dig():
-		0:forward	1:left	2:back
-		3:right  	4:up	5:down
-		
-		notes of var "side" in function dfs():
-		0:around	1:up	2:down
-	]]
 
 --get distance
 print("How long do you want the miner to go? (unit:block(s))")
 times = read()
 hbtimes = times --have been go forward times
 --end
+
+local poop = {
+	"minecraft:stone",
+	"minecraft:gravel",
+	"minecraft:dirt",
+	"minecraft:cobblestone",
+}
+--var or array area end
+
+--function area start
+
+--[[notes of var "side" in function go(),compare(),dig():
+		0:forward	1:left	2:back
+		3:right  	4:up	5:down
+		
+		notes of var "side" in function dfs():
+		0:around	1:up	2:down
+]]
+
 	
 function go(side)
 	if side == 0 then
@@ -39,7 +43,6 @@ function go(side)
 	
 	if side == 2 then
 		while not turtle.back() do
-			turtle.turnLeft()
 			turtle.turnLeft()
 			turtle.turnLeft()
 			turtle.dig()
@@ -72,16 +75,16 @@ end
 
 function compare(side)
 	if side == 0 then
-		if turtle.forward() then
-			turtle.back()
-			return true
-		end
+		success, data = turtle.inspect() --get block data
 		
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compare() then
-				return true
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					return true
+				end
 			end
+		else
+			return true
 		end
 		
 		return false
@@ -90,19 +93,18 @@ function compare(side)
 	if side == 1 then
 		turtle.turnLeft()
 		
-		if turtle.forward() then
-			turtle.back()
+		success, data = turtle.inspect() --get block data
+		
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					turtle.turnRight()
+					return true
+				end
+			end
+		else
 			turtle.turnRight()
 			return true
-		end
-		
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compare() then
-				turtle.turnRight()
-				return true
-			end
-				
 		end
 		
 		turtle.turnRight()
@@ -113,20 +115,20 @@ function compare(side)
 		turtle.turnLeft()
 		turtle.turnLeft()
 		
-		if turtle.forward() then
-			turtle.back()
+		success, data = turtle.inspect() --get block data
+		
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					turtle.turnRight()
+					turtle.turnRight()
+					return true
+				end
+			end
+		else
 			turtle.turnRight()
 			turtle.turnRight()
 			return true
-		end
-		
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compare() then
-				turtle.turnRight()
-				turtle.turnRight()
-				return true
-			end
 		end
 		
 		turtle.turnRight()
@@ -137,18 +139,18 @@ function compare(side)
 	if side == 3 then
 		turtle.turnRight()
 		
-		if turtle.forward() then
-			turtle.back()
+		success, data = turtle.inspect() --get block data
+		
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					turtle.turnLeft()
+					return true
+				end
+			end
+		else
 			turtle.turnLeft()
 			return true
-		end
-
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compare() then
-				turtle.turnLeft()
-				return true
-			end
 		end
 		
 		turtle.turnLeft()
@@ -156,32 +158,32 @@ function compare(side)
 	end
 	
 	if side == 4 then
-		if turtle.up() then
-			turtle.down()
-			return true
-		end
+		success, data = turtle.inspectUp() --get block data
 		
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compareUp() then
-				return true
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					return true
+				end
 			end
+		else
+			return true
 		end
 		
 		return false
 	end
 	
 	if side == 5 then
-		if turtle.down() then
-			turtle.up()
-			return true
-		end
+		success, data = turtle.inspectDown() --get block data
 		
-		for i = selectNum, 16 do
-			turtle.select(i)
-			if turtle.compareDown() then
-				return true
+		if success then --compare block data
+			for i = 1, table.getn(poop) do
+				if data.name == poop[i] then
+					return true
+				end
 			end
+		else
+			return true
 		end
 		
 		return false
