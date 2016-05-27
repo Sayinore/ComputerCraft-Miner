@@ -7,11 +7,14 @@ times = read()
 hbtimes = times --have been go forward times
 --end
 
-local poop = {
-	"minecraft:stone",
-	"minecraft:gravel",
-	"minecraft:dirt",
-	"minecraft:cobblestone",
+local mineral = {
+	"minecraft:coal_ore",
+	"minecraft:iron_ore",
+	"minecraft:redstone_ore",
+	"minecraft:gold_ore",
+	"minecraft:lapis_ore",
+	"minecraft:emerald_ore",
+	"minecraft:quartz_ore",
 }
 --var or array area end
 
@@ -78,96 +81,29 @@ function compare(side)
 		success, data = turtle.inspect() --get block data
 		
 		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
+			for i = 1, table.getn(mineral) do
+				if data.name == mineral[i] then
 					return true
 				end
 			end
 		else
-			return true
+			return false
 		end
 		
 		return false
 	end
 	
-	if side == 1 then
-		turtle.turnLeft()
-		
-		success, data = turtle.inspect() --get block data
-		
-		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
-					turtle.turnRight()
-					return true
-				end
-			end
-		else
-			turtle.turnRight()
-			return true
-		end
-		
-		turtle.turnRight()
-		return false
-	end
-	
-	if side == 2 then
-		turtle.turnLeft()
-		turtle.turnLeft()
-		
-		success, data = turtle.inspect() --get block data
-		
-		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
-					turtle.turnRight()
-					turtle.turnRight()
-					return true
-				end
-			end
-		else
-			turtle.turnRight()
-			turtle.turnRight()
-			return true
-		end
-		
-		turtle.turnRight()
-		turtle.turnRight()
-		return false
-	end
-
-	if side == 3 then
-		turtle.turnRight()
-		
-		success, data = turtle.inspect() --get block data
-		
-		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
-					turtle.turnLeft()
-					return true
-				end
-			end
-		else
-			turtle.turnLeft()
-			return true
-		end
-		
-		turtle.turnLeft()
-		return false
-	end
-	
-	if side == 4 then
+	if side == 4 then		
 		success, data = turtle.inspectUp() --get block data
 		
 		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
+			for i = 1, table.getn(mineral) do
+				if data.name == mineral[i] then
 					return true
 				end
 			end
 		else
-			return true
+			return false
 		end
 		
 		return false
@@ -177,13 +113,13 @@ function compare(side)
 		success, data = turtle.inspectDown() --get block data
 		
 		if success then --compare block data
-			for i = 1, table.getn(poop) do
-				if data.name == poop[i] then
+			for i = 1, table.getn(mineral) do
+				if data.name == mineral[i] then
 					return true
 				end
 			end
 		else
-			return true
+			return false
 		end
 		
 		return false
@@ -226,49 +162,21 @@ end
 
 function dfs(side)
 	if side == 0 then
-		if compare(0) == false then
-			dig(0)
-			go(0)
-			dfs(0)
-			dfs(1)
-			dfs(2)
-
-			go(2)
-		end
-		
-		if compare(1) == false then
-			dig(1)
-			go(1)
-			dfs(0)
-			dfs(1)
-			dfs(2)
-
-			go(3)
-		end
-		
-		if compare(2) == false then
-			dig(2)
-			go(2)
-			dfs(0)
-			dfs(1)
-			dfs(2)
-
-			go(0)
-		end
-		
-		if compare(3) == false then
-			dig(3)
-			go(3)
-			dfs(0)
-			dfs(1)
-			dfs(2)
-
-			go(1)
+		for i = 1, 4 do
+			if compare(0) then
+				dig(0)
+				go(0)
+				dfs(0)
+				dfs(1)
+				dfs(2)
+				go(2)
+			end
+			turtle.turnLeft()
 		end
 	end
 	
 	if side == 1 then
-		if compare(4) == false then
+		if compare(4) then
 			dig(4)
 			go(4)
 			
@@ -281,7 +189,7 @@ function dfs(side)
 	end
 	
 	if side == 2 then
-		if compare(5) == false then
+		if compare(5) then
 			dig(5)
 			go(5)
 			
