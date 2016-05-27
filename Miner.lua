@@ -1,5 +1,7 @@
 --var or array define area start
 torch = 1
+cubbestone = 2
+special = "special"
 
 --get distance
 print("How long do you want the miner to go? (unit:block(s))")
@@ -13,8 +15,19 @@ local mineral = {
 	"minecraft:redstone_ore",
 	"minecraft:gold_ore",
 	"minecraft:lapis_ore",
-	"minecraft:emerald_ore",
 	"minecraft:quartz_ore",
+}
+
+local special = {
+	"minecraft:diamond_ore",
+	"minecraft:emerald_ore",
+	"minecraft:mossy_cubbestone",
+}
+
+local smsg = {
+	"Find diamond",
+	"Find emerald",
+	"Find monster spawner",
 }
 --var or array area end
 
@@ -81,8 +94,16 @@ function compare(side)
 		success, data = turtle.inspect() --get block data
 		
 		if success then --compare block data
+			for i = 1, table.getn(special) do
+				if data.name == special[i] then
+					alert(smsg[i])
+					return "special"
+				end
+			end
+			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
+					alert(smsg[i])
 					return true
 				end
 			end
@@ -97,6 +118,13 @@ function compare(side)
 		success, data = turtle.inspectUp() --get block data
 		
 		if success then --compare block data
+			for i = 1, table.getn(special) do
+				if data.name == special[i] then
+					alert(smsg[i])
+					return "special"
+				end
+			end
+			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
 					return true
@@ -113,6 +141,13 @@ function compare(side)
 		success, data = turtle.inspectDown() --get block data
 		
 		if success then --compare block data
+			for i = 1, table.getn(special) do
+				if data.name == special[i] then
+					alert(smsg[i])
+					return "special"
+				end
+			end
+			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
 					return true
@@ -162,20 +197,31 @@ end
 
 function dfs(side)
 	if side == 0 then
+		if compare(0) == "special" then
+				return "special"
+		end
+		
 		for i = 1, 4 do
 			if compare(0) then
 				dig(0)
 				go(0)
+				
 				dfs(0)
 				dfs(1)
 				dfs(2)
+				
 				go(2)
+				place(0, cubbestone)
 			end
 			turtle.turnLeft()
 		end
 	end
 	
 	if side == 1 then
+		if compare(4) == "special" then
+			return "special"
+		end
+		
 		if compare(4) then
 			dig(4)
 			go(4)
@@ -185,10 +231,15 @@ function dfs(side)
 			dfs(2)
 			
 			go(5)
+			place(4, cubbestone)
 		end
 	end
 	
 	if side == 2 then
+		if compare(5) == "special" then
+			return "special"
+		end
+		
 		if compare(5) then
 			dig(5)
 			go(5)
@@ -196,9 +247,49 @@ function dfs(side)
 			dfs(0)
 			dfs(1)
 			dfs(2)
-
+			
 			go(4)
+			place(5, cubbestone)
 		end
+	end
+end
+
+function place(side, grid)
+	if side == 0 then
+		turtle.select(grid)
+		turtle.place()
+	end
+	if side == 1 then
+		turtle.turnLeft()
+		turtle.select(grid)
+		turtle.place()
+		turtle.turnRight()
+	end
+	
+	if side == 2 then
+		turtle.turnLeft()
+		turtle.turnLeft()
+		turtle.select(grid)
+		turtle.place()
+		turtle.turnRight()
+		turtle.turnRight()
+	end
+	
+	if side == 3 then
+		turtle.turnRight()
+		turtle.select(grid)
+		turtle.place()
+		turtle.turnLeft()
+	end
+	
+	if side == 4 then
+		turtle.select(grid)
+		turtle.placeUp()
+	end
+	
+	if side == 5 then
+		turtle.select(grid)
+		turtle.placeDown()
 	end
 end
 
