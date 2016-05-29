@@ -10,7 +10,8 @@ Lua programs in ComputerCraft
 
 #Notice
 Your ComputerCraft mod version must be over v1.64.  
-Make sure that your turtles has fuels.  
+Make sure that your turtle has fuels and a wireless modem.  
+Make sure there are 4 GPS servers at least. ([How to build a GPS cluster?][1])
 
 #Useage
 ##Miner
@@ -21,11 +22,11 @@ How to put items:
 | 1                   | Torch              |
 | 2                   | Cubbestone         |
 
-Make sure that your mining-turtle has a wireless modem.
+
 
 #License
 Using Apache Lincense v2.0.  
-See at [Open Source Initiative][1]
+See at [Open Source Initiative][2]
 
-
-[1]:https://opensource.org/licenses/Apache-2.0 "Apache License on Open Source Initiative"
+[1]:http://www.computercraft.info/forums2/index.php?/topic/3088-how-to-guide-gps-global-position-system "GPS Guide on Computercraft Forum"
+[2]:https://opensource.org/licenses/Apache-2.0 "Apache License on Open Source Initiative"
