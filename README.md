@@ -1,6 +1,13 @@
 #Computer-Craft
 Lua programs in ComputerCraft  
 
+#Branch
+
+| Name of Branch | Merit | Shortcoming | Remark |
+| :------------: | :-------------------------: | :-------------------: | :-------------: |
+| Master         | Don't need input xyz,facing | Need GPS servers      | Will update     |
+| SelfGPS        | Don't need GPS servers      | Need input xyz,facing | Will NOT update |
+
 #Notice
 Your ComputerCraft mod version must be over v1.64.  
 Make sure that your turtles has fuels.  
