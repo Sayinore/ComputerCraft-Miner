@@ -96,7 +96,10 @@ function compare(side)
 		if success then --compare block data
 			for i = 1, table.getn(special) do
 				if data.name == special[i] then
-					alert(smsg[i])
+					x, y, z = gps.locate()
+					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
+					alert(asmsg)
+					asmsg = "nil"
 					return "special"
 				end
 			end
@@ -120,7 +123,9 @@ function compare(side)
 		if success then --compare block data
 			for i = 1, table.getn(special) do
 				if data.name == special[i] then
-					alert(smsg[i])
+					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
+					alert(asmsg)
+					asmsg = "nil"
 					return "special"
 				end
 			end
@@ -143,7 +148,9 @@ function compare(side)
 		if success then --compare block data
 			for i = 1, table.getn(special) do
 				if data.name == special[i] then
-					alert(smsg[i])
+					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
+					alert(asmsg)
+					asmsg = "nil"
 					return "special"
 				end
 			end
@@ -198,7 +205,7 @@ end
 function dfs(side)
 	if side == 0 then
 		if compare(0) == "special" then
-				return "special"
+			return "special"
 		end
 		
 		for i = 1, 4 do
