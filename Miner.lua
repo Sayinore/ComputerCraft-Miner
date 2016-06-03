@@ -40,9 +40,8 @@ local smsg = {
 		notes of var "side" in function dfs():
 		0:around	1:up	2:down
 ]]
-
 	
-function go(side)
+	function go(side)
 	if side == 0 then
 		while not turtle.forward() do
 			turtle.dig()
@@ -89,7 +88,7 @@ function go(side)
 	end
 end
 
-function compare(side)
+	function compare(side)
 	if side == 0 then
 		success, data = turtle.inspect() --get block data
 		
@@ -168,7 +167,7 @@ function compare(side)
 	end
 end
 
-function dig(side)
+	function dig(side)
 	if side == 0 then
 		turtle.dig()
 	end
@@ -202,7 +201,7 @@ function dig(side)
 	end
 end
 
-function dfs(side)
+	function dfs(side)
 	if side == 0 then
 		if compare(0) == "special" then
 			return "special"
@@ -261,7 +260,7 @@ function dfs(side)
 	end
 end
 
-function place(side, grid)
+	function place(side, grid)
 	if side == 0 then
 		turtle.select(grid)
 		turtle.place()
@@ -300,10 +299,23 @@ function place(side, grid)
 	end
 end
 
-function alert(message)
+	function alert(message)
 	rednet.open("right")
 	rednet.broadcast(message)
 end
+
+	function isearch(iname) --item search, item name
+		for i = 1, 16 do
+			local data = turtle.getItemDetail(i)
+			if data then
+				if data.name == iname then
+					return i
+				end
+			end
+		end
+		
+		return false
+	end
 --function area end
 
 for i = 1, 1 do
@@ -319,11 +331,10 @@ for i = 1, 1 do
 
 	alert("Start backing...")
 
-	turtle.select(torch)
 	turtle.turnLeft()
 	turtle.turnLeft()
 	go(4)
-	turtle.placeDown()
+	place(5, isearch("minecraft:torch"))
 
 
 	for i = 1, hbtimes do
@@ -332,8 +343,7 @@ for i = 1, 1 do
 		dfs(1)
 	
 		if i%8 == 0 then
-			turtle.select(torch)
-			turtle.placeDown()
+			place(5, isearch("minecraft:torch"))
 		end
 	end
 
