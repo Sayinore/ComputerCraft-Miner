@@ -21,15 +21,6 @@ How to install:
 3. Open the folder of the file
 4. Put this program into the folder
 
-How to put items:
-
-| Number of Grid | Item Name |
-| :-----------------: | :----------------: |
-| 1                   | Torch              |
-| 2                   | Cubbestone         |
-
-
-
 #License
 Using Apache Lincense v2.0.  
 See at [Open Source Initiative][2]
