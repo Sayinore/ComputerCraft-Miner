@@ -99,13 +99,14 @@ end
 					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
 					alert(asmsg)
 					asmsg = "nil"
+					data = "nil"
 					return "special"
 				end
 			end
 			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
-					alert(smsg[i])
+					data = "nil"
 					return true
 				end
 			end
@@ -125,12 +126,14 @@ end
 					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
 					alert(asmsg)
 					asmsg = "nil"
+					data = "nil"
 					return "special"
 				end
 			end
 			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
+					data = "nil"
 					return true
 				end
 			end
@@ -150,12 +153,14 @@ end
 					asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
 					alert(asmsg)
 					asmsg = "nil"
+					data = "nil"
 					return "special"
 				end
 			end
 			
 			for i = 1, table.getn(mineral) do
 				if data.name == mineral[i] then
+					data = "nil"
 					return true
 				end
 			end
@@ -168,147 +173,150 @@ end
 end
 
 	function dig(side)
-	if side == 0 then
-		turtle.dig()
-	end
+		if side == 0 then
+			turtle.dig()
+		end
 	
-	if side == 1 then
-		turtle.turnLeft()
-		turtle.dig()
-		turtle.turnRight()
-	end
-	
-	if side == 2 then
-		turtle.turnLeft()
-		turtle.turnLeft()
-		turtle.dig()
-		turtle.turnRight()
-		turtle.turnRight()
-	end
-	
-	if side == 3 then
-		turtle.turnRight()
-		turtle.dig()
-		turtle.turnLeft()
-	end
-	
-	if side == 4 then
-		turtle.digUp()
-	end
-	
-	if side == 5 then
-		turtle.digDown()
-	end
-end
-
-	function dfs(side)
-	if side == 0 then
-		if compare(0) == "special" then
-			return "special"
+		if side == 1 then
+			turtle.turnLeft()
+			turtle.dig()
+			turtle.turnRight()
 		end
 		
-		for i = 1, 4 do
-			if compare(0) then
-				dig(0)
-				go(0)
+		if side == 2 then
+			turtle.turnLeft()
+			turtle.turnLeft()
+			turtle.dig()
+			turtle.turnRight()
+			turtle.turnRight()
+		end
+		
+		if side == 3 then
+			turtle.turnRight()
+			turtle.dig()
+			turtle.turnLeft()
+		end
+		
+		if side == 4 then
+			turtle.digUp()
+		end
+		
+		if side == 5 then
+			turtle.digDown()
+		end
+	end
+
+	function dfs(side)
+		if side == 0 then
+			if compare(0) == "special" then
+				return "special"
+			end
+			
+			for i = 1, 4 do
+				if compare(0) then
+					dig(0)
+					go(0)
+					
+					dfs(0)
+					dfs(1)
+					dfs(2)
+					
+					go(2)
+					place(0, cubbestone)
+				end
+				turtle.turnLeft()
+			end
+		end
+		
+		if side == 1 then
+			if compare(4) == "special" then
+				return "special"
+			end
+			
+			if compare(4) then
+				dig(4)
+				go(4)
 				
 				dfs(0)
 				dfs(1)
 				dfs(2)
 				
-				go(2)
-				place(0, cubbestone)
+				go(5)
+				place(4, cubbestone)
 			end
-			turtle.turnLeft()
-		end
-	end
-	
-	if side == 1 then
-		if compare(4) == "special" then
-			return "special"
 		end
 		
-		if compare(4) then
-			dig(4)
-			go(4)
+		if side == 2 then
+			if compare(5) == "special" then
+				return "special"
+			end
 			
-			dfs(0)
-			dfs(1)
-			dfs(2)
-			
-			go(5)
-			place(4, cubbestone)
+			if compare(5) then
+				dig(5)
+				go(5)
+				
+				dfs(0)
+				dfs(1)
+				dfs(2)
+				
+				go(4)
+				place(5, cubbestone)
+			end
 		end
 	end
-	
-	if side == 2 then
-		if compare(5) == "special" then
-			return "special"
-		end
-		
-		if compare(5) then
-			dig(5)
-			go(5)
-			
-			dfs(0)
-			dfs(1)
-			dfs(2)
-			
-			go(4)
-			place(5, cubbestone)
-		end
-	end
-end
 
 	function place(side, grid)
-	if side == 0 then
-		turtle.select(grid)
-		turtle.place()
+		if side == 0 then
+			turtle.select(grid)
+			turtle.place()
+		end
+		
+		if side == 1 then
+			turtle.turnLeft()
+			turtle.select(grid)
+			turtle.place()
+			turtle.turnRight()
+		end
+		
+		if side == 2 then
+			turtle.turnLeft()
+			turtle.turnLeft()
+			turtle.select(grid)
+			turtle.place()
+			turtle.turnRight()
+			turtle.turnRight()
+		end
+		
+		if side == 3 then
+			turtle.turnRight()
+			turtle.select(grid)
+			turtle.place()
+			turtle.turnLeft()
+		end
+		
+		if side == 4 then
+			turtle.select(grid)
+			turtle.placeUp()
+		end
+		
+		if side == 5 then
+			turtle.select(grid)
+			turtle.placeDown()
+		end
 	end
-	if side == 1 then
-		turtle.turnLeft()
-		turtle.select(grid)
-		turtle.place()
-		turtle.turnRight()
-	end
-	
-	if side == 2 then
-		turtle.turnLeft()
-		turtle.turnLeft()
-		turtle.select(grid)
-		turtle.place()
-		turtle.turnRight()
-		turtle.turnRight()
-	end
-	
-	if side == 3 then
-		turtle.turnRight()
-		turtle.select(grid)
-		turtle.place()
-		turtle.turnLeft()
-	end
-	
-	if side == 4 then
-		turtle.select(grid)
-		turtle.placeUp()
-	end
-	
-	if side == 5 then
-		turtle.select(grid)
-		turtle.placeDown()
-	end
-end
 
 	function alert(message)
-	rednet.open("right")
-	rednet.broadcast(message)
-end
+		rednet.open("right")
+		rednet.broadcast(message)
+	end
 
 	function isearch(iname) --item search, item name
 		for i = 1, 16 do
 			local data = turtle.getItemDetail(i)
 			if data then
 				if data.name == iname then
+					data = "nil"
+					iname = "nil"
 					return i
 				end
 			end
