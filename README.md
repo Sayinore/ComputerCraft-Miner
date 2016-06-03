@@ -15,6 +15,12 @@ Make sure there are 4 GPS servers at least. ([How to build a GPS cluster?][1])
 
 #Useage
 ##Miner
+How to install:  
+1. Open your turtle, creat file with a special name (e.g. jkfs)  
+2. Search file name in explorer in you operating system  
+3. Open the folder of the file
+4. Put this program into the folder
+
 How to put items:
 
 | Number of Grid | Item Name |
