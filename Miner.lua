@@ -1,8 +1,4 @@
 --var or array define area start
-	torch = 1
-	cubbestone = 2
-	special = "special"
-
 	--get distance
 		print("How long do you want the miner to go? (unit:block(s))")
 		times = read()
@@ -21,7 +17,7 @@
 	local special = {
 		"minecraft:diamond_ore",
 		"minecraft:emerald_ore",
-		"minecraft:mossy_cubbestone",
+		"minecraft:mossy_cobblestone",
 	}
 
 	local smsg = {
@@ -221,7 +217,7 @@ end
 					dfs(2)
 					
 					go(2)
-					place(0, cubbestone)
+					place(0, isearch("minecraft:cobblestone"))
 				end
 				turtle.turnLeft()
 			end
@@ -241,7 +237,7 @@ end
 				dfs(2)
 				
 				go(5)
-				place(4, cubbestone)
+				place(4, isearch("minecraft:cobblestone"))
 			end
 		end
 		
@@ -259,7 +255,7 @@ end
 				dfs(2)
 				
 				go(4)
-				place(5, cubbestone)
+				place(5, isearch("minecraft:cobblestone"))
 			end
 		end
 	end
@@ -313,14 +309,13 @@ end
 		for i = 1, 16 do
 			local data = turtle.getItemDetail(i)
 			if data then
-				if data.name == iname then
-					data = "nil"
+				if iname == data.name then
 					iname = "nil"
+					data = "nil"
 					return i
 				end
 			end
 		end
-		
 		return false
 	end
 --function area end
