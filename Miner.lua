@@ -1,30 +1,30 @@
 --var or array define area start
-torch = 1
-cubbestone = 2
-special = "special"
+	torch = 1
+	cubbestone = 2
+	special = "special"
 
---get distance
-print("How long do you want the miner to go? (unit:block(s))")
-times = read()
-hbtimes = times --have been go forward times
---end
+	--get distance
+		print("How long do you want the miner to go? (unit:block(s))")
+		times = read()
+		hbtimes = times --have been go forward times
+	--end
 
-local mineral = {
-	"minecraft:coal_ore",
-	"minecraft:iron_ore",
-	"minecraft:redstone_ore",
-	"minecraft:gold_ore",
-	"minecraft:lapis_ore",
-	"minecraft:quartz_ore",
-}
+	local mineral = {
+		"minecraft:coal_ore",
+		"minecraft:iron_ore",
+		"minecraft:redstone_ore",
+		"minecraft:gold_ore",
+		"minecraft:lapis_ore",
+		"minecraft:quartz_ore",
+	}
 
-local special = {
-	"minecraft:diamond_ore",
-	"minecraft:emerald_ore",
-	"minecraft:mossy_cubbestone",
-}
+	local special = {
+		"minecraft:diamond_ore",
+		"minecraft:emerald_ore",
+		"minecraft:mossy_cubbestone",
+	}
 
-local smsg = {
+	local smsg = {
 	"Find diamond",
 	"Find emerald",
 	"Find monster spawner",
@@ -32,14 +32,13 @@ local smsg = {
 --var or array area end
 
 --function area start
-
---[[notes of var "side" in function go(),compare(),dig():
+	--[[notes of var "side" in function go(),compare(),dig():
 		0:forward	1:left	2:back
 		3:right  	4:up	5:down
 		
 		notes of var "side" in function dfs():
 		0:around	1:up	2:down
-]]
+	]]
 	
 	function go(side)
 	if side == 0 then
