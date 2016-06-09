@@ -57,7 +57,7 @@ How to install:
 ###Added
 - Array Mineral
 
-###Deled
+###Removed
 - Array Poop
 
 ##v2.0 
@@ -74,7 +74,7 @@ How to install:
 ###Added
 - Tip before asking for distance
 
-##v1.0 
+##v1.0 [NOT RECOMMEND]
 2016-5-21
 ###Added
 - Depth-first search
