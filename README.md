@@ -1,5 +1,5 @@
-#Computer-Craft
-Lua programs in ComputerCraft  
+#ComputerCraft-Miner
+Mine program with Depth-first search in ComputerCraft  
 
 #Branch
 
