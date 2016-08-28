@@ -2,6 +2,13 @@
 Mine program with Depth-first search in ComputerCraft  
 
 
+#Features
+- Get all the minerals you can see in the mine road, and fill the air blocks with any block you want after digging mineral blocks
+- Report the positions of special things (such as diamond ores, mob spawners, nether fortresses, abandoned mine shafts) to the host computer
+- Place torches in the mine road
+- Fill fluid blocks with any block you want
+- Simple but useful functions (err, I mean functions like "`function()`")
+
 #Requirement
 ##Mod version
 v1.64 or above
@@ -15,10 +22,17 @@ v1.64 or above
 - Fuels
 - Filling blocks
 
+
 #Useage
-How to install:  
-Open your turtle. Then use this command:  
-`wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner`
+##How to install:  
+Open your turtle. 
+If your mod version is 1.77 or above, then please use this command:  
+`wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner`  
+If it's not, please use the following command in lua mode:  
+`io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()`  
+
+##How to use:
+Place the mining turtle with this program, and then start this program.
 
 
 #Personalization
@@ -41,7 +55,7 @@ fillblock = "minecraft:cobblestone"
 
 |   Name of Branch   | Latest Version |              Merit               | Shortcoming               |       Remark        |
 | :----------------: | :------------: | :------------------------------: | ------------------------- | :-----------------: |
-| Master (RECOMMEND) |      v4.0      | Doesn't need to input xyz,facing | Needs a GPS culster       |   Will be updated   |
+| (RECOMMEND) Master |      v4.0      | Doesn't need to input xyz,facing | Needs a GPS culster       |   Will be updated   |
 |      Self-GPS      |      v3.0      |   Doesn't need any GPS things    | Needs to input xyz,facing | Will NOT be updated |
 
 #Changelog
