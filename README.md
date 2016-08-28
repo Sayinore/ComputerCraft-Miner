@@ -1,6 +1,35 @@
 #ComputerCraft-Miner
 Mine program with Depth-first search in ComputerCraft  
 
+
+#Requires
+##Mod version
+v1.64 or above
+
+##Things in your map
+- A GPS cluster ([How to build a GPS cluster?][1])
+- (RECOMMEND) A wireless receiving computer
+
+##Things in/on your mining turtle
+- A wireless modem
+- Fuels
+- Filling blocks
+
+#Useage
+How to install:  
+Open your turtle. Then use this command:  
+`wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner`
+
+
+#Personalization
+You may set your own settings, or use my RECOMMEND settings. Recommend settings are in the program. If you still want to replace them, just edit the following things:  
+`--REPLACE YOUR OWN SETTINGS HERE`  
+`distance =~~32~~`[Your settings here]   
+`fillblock = ~~"minecraft:cobblestone"~~`[Your settings here]  
+`--REPLACE YOUR OWN SETTINGS HERE`  
+They're all in the top of the program.
+
+
 #Branch
 
 | Name of Branch | Merit | Shortcoming | Remark |
@@ -8,19 +37,16 @@ Mine program with Depth-first search in ComputerCraft
 | Master         | Don't need input xyz,facing | Need GPS servers      | Will update     |
 | SelfGPS        | Don't need GPS servers      | Need input xyz,facing | Will NOT update |
 
-#Notice
-Your ComputerCraft mod version must be over v1.64.  
-Make sure that your turtle has fuels and a wireless modem.  
-Make sure that there are 4 GPS servers at least. ([How to build a GPS cluster?][1])
-Make sure that your turtle has cobblestones
-#Useage
-How to install:  
-1. Open your turtle, creat file with a special name (e.g. jkfs)  
-2. Search file name in explorer in you operating system  
-3. Open the folder of the file
-4. Put this program into the folder
 
 #Changelog
+##v4.0
+2016-8-28
+###Fixed
+- Bug: The miner does NOT report the position of the mineral block, BUT the position of itself
+
+###Changed
+- Do NOT ask for distance, but you can set some settings by editing file
+
 ##v3.6
 2016-6-9
 ###Addded
@@ -37,7 +63,7 @@ How to install:
 - Release memory
 
 ###Fixed
-- Wrong typing
+- Bug: typo
 
 ##v3.0 2016-5-29
 ###Added
