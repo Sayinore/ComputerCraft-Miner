@@ -1,7 +1,7 @@
 --var and array define area start
 	--REPLACE YOUR OWN SETTINGS HERE
 		distance = 32
-		fillblock = "minecraft:cobblestone"
+		fillingblock = "minecraft:cobblestone"
 	--REPLACE YOUR OWN SETTINGS HERE
 
 	--IF YOUR MODS HAVE THEIR OWN THINGS, YOU CAN ADD THEM HERE
@@ -257,7 +257,7 @@
 					dfs(5)
 					
 					go(2)
-					place(0, isearch(fillblock))
+					place(0, isearch(fillingblock))
 				end
 				turtle.turnLeft()
 			end
@@ -273,7 +273,7 @@
 				dfs(5)
 				
 				go(5)
-				place(4, isearch(fillblock))
+				place(4, isearch(fillingblock))
 			end
 		end
 		
@@ -287,7 +287,7 @@
 				dfs(5)
 				
 				go(4)
-				place(5, isearch(fillblock))
+				place(5, isearch(fillingblock))
 			end
 		end
 	end
@@ -299,7 +299,7 @@
 			if success then --compare block data
 				for i = 1, table.getn(fluid) do
 					if data.name == fluid[i] then
-						place(0, isearch(fillblock))
+						place(0, isearch(fillingblock))
 					end
 				end
 
@@ -328,7 +328,7 @@
 			if success then --compare block data
 				for i = 1, table.getn(fluid) do
 					if data.name == fluid[i] then
-						place(4, isearch(fillblock))
+						place(4, isearch(fillingblock))
 					end
 				end
 			
@@ -357,7 +357,7 @@
 			if success then --compare block data
 				for i = 1, table.getn(fluid) do
 					if data.name == fluid[i] then
-						place(5, isearch(fillblock))
+						place(5, isearch(fillingblock))
 					end
 				end
 				
