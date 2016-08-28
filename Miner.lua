@@ -1,10 +1,10 @@
 --var and array define area start
-	--get distance
-		print("How long do you want the miner to go? (unit:block(s))")
-		times = read()
-		hbtimes = times --have been go forward times
-	--end
+	--REPLACE YOUR OWN SETTINGS HERE
+		distance = 32
+		fillblock = "minecraft:cobblestone"
+	--REPLACE YOUR OWN SETTINGS HERE
 
+	--IF YOUR MODS HAVE THEIR OWN THINGS, YOU CAN ADD THEM HERE
 	local mineral = {
 		"minecraft:coal_ore",
 		"minecraft:iron_ore",
@@ -28,18 +28,18 @@
 		"minecraft:nether_wart",
 	}
 
-	local smsg = {
-		"Find diamond",
-		"Find emerald",
-		"Find monster spawner",
-		"Find abandoned mine shafts",
-		"Find abandoned mine shafts",
-		"Find nether fortresses",
-		"Find nether fortresses",
-		"Find nether fortresses",
-		"Find nether fortresses",
-		"Find nether fortresses",
-		"Find nether fortresses",
+	local reportmsg = {
+		"Found diamond! See at ",
+		"Found emerald! See at ",
+		"Found monster spawner! See at ",
+		"Found abandoned mine shafts! See at ",
+		"Found abandoned mine shafts! See at ",
+		"Found nether fortresses! See at ",
+		"Found nether fortresses! See at ",
+		"Found nether fortresses! See at ",
+		"Found nether fortresses! See at ",
+		"Found nether fortresses! See at ",
+		"Found nether fortresses! See at ",
 	}
 
 	local fluid = {
@@ -48,6 +48,10 @@
 		"minecraft:lava",
 		"minecraft:flowing_lava",
 	}
+
+	local msghistory = {}
+	--IF YOUR MODS HAVE THEIR OWN THINGS, YOU CAN ADD THEM HERE
+
 --var and array area end
 
 --function area start
@@ -61,149 +65,31 @@
 	
 	function go(side)
 		if side == 0 then
-			while not turtle.forward() do
-				turtle.dig()
-			end
+			turtle.forward()
 		end
 		
 		if side == 1 then
 			turtle.turnLeft()
-			while not turtle.forward() do
-				turtle.dig()
-			end
+			turtle.forward()
 			turtle.turnRight()
 		end
 		
 		if side == 2 then
-			while not turtle.back() do
-				turtle.turnLeft()
-				turtle.turnLeft()
-				turtle.dig()
-				turtle.turnRight()
-				turtle.turnRight()
-				turtle.turnRight()
-			end
+			turtle.back()
 		end
 		
 		if side == 3 then
 			turtle.turnRight()
-			while not turtle.forward() do
-				turtle.dig()
-			end
+			turtle.forward()
 			turtle.turnLeft()
 		end
 		
 		if side == 4 then
-			while not turtle.up() do
-				turtle.digUp()
-			end
+			turtle.up()
 		end
 		
 		if side == 5 then
-			while not turtle.down() do
-				turtle.digDown()
-			end
-		end
-	end
-
-	function compare(side)
-		if side == 0 then
-			success, data = turtle.inspect() --get block data
-			
-			if success then --compare block data
-				for i = 1, table.getn(fluid) do
-					if data.name == fluid[i] then
-						place(0, isearch("minecraft:cobblestone"))
-					end
-				end
-				for i = 1, table.getn(special) do
-					if data.name == special[i] then
-						x, y, z = gps.locate()
-						asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
-						alert(asmsg)
-						asmsg = "nil"
-						data = "nil"
-						return "special"
-					end
-				end
-				
-				for i = 1, table.getn(mineral) do
-					if data.name == mineral[i] then
-						data = "nil"
-						return true
-					end
-				end
-			else
-				return false
-			end
-			
-			return false
-		end
-		
-		if side == 4 then		
-			success, data = turtle.inspectUp() --get block data
-			
-			if success then --compare block data
-				for i = 1, table.getn(fluid) do
-					if data.name == fluid[i] then
-						place(4, isearch("minecraft:cobblestone"))
-					end
-				end
-			
-				for i = 1, table.getn(special) do
-					if data.name == special[i] then
-						asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
-						alert(asmsg)
-						asmsg = "nil"
-						data = "nil"
-						return "special"
-					end
-				end
-				
-				for i = 1, table.getn(mineral) do
-					if data.name == mineral[i] then
-						data = "nil"
-						return true
-					end
-				end
-			else
-				return false
-			end
-			
-			return false
-		end
-		
-		if side == 5 then
-			success, data = turtle.inspectDown() --get block data
-			
-			if success then --compare block data
-				for i = 1, table.getn(fluid) do
-					if data.name == fluid[i] then
-						place(5, isearch("minecraft:cobblestone"))
-					end
-				end
-				
-				for i = 1, table.getn(special) do
-					if data.name == special[i] then
-						asmsg = smsg[i].."x:"..x.." y:"..y.." z:"..z
-						alert(asmsg)
-						asmsg = "nil"
-						data = "nil"
-						return "special"
-					end
-				end
-				
-				for i = 1, table.getn(mineral) do
-					if data.name == mineral[i] then
-						data = "nil"
-						return true
-					end
-				end
-			else
-				return false
-			end
-			
-			return false
+			turtle.down()
 		end
 	end
 
@@ -240,66 +126,7 @@
 			turtle.digDown()
 		end
 	end
-
-	function dfs(side)
-		if side == 0 then
-			if compare(0) == "special" then
-				return "special"
-			end
-			
-			for i = 1, 4 do
-				if compare(0) then
-					dig(0)
-					go(0)
-					
-					dfs(0)
-					dfs(1)
-					dfs(2)
-					
-					go(2)
-					place(0, isearch("minecraft:cobblestone"))
-				end
-				turtle.turnLeft()
-			end
-		end
-		
-		if side == 1 then
-			if compare(4) == "special" then
-				return "special"
-			end
-			
-			if compare(4) then
-				dig(4)
-				go(4)
-				
-				dfs(0)
-				dfs(1)
-				dfs(2)
-				
-				go(5)
-				place(4, isearch("minecraft:cobblestone"))
-			end
-		end
-		
-		if side == 2 then
-			if compare(5) == "special" then
-				return "special"
-			end
-			
-			if compare(5) then
-				dig(5)
-				go(5)
-				
-				dfs(0)
-				dfs(1)
-				dfs(2)
-				
-				go(4)
-				place(5, isearch("minecraft:cobblestone"))
-			end
-		end
-	end
-
+	
 	function place(side, grid)
 		if side == 0 then
 			turtle.select(grid)
@@ -340,9 +167,218 @@
 		end
 	end
 
+	function turnto(side)
+		if (side == 1) then
+			turtle.turnLeft()
+		end
+
+		if (side == 2) then
+			turtle.turnLeft()
+			turtle.turnLeft()
+		end
+
+		if (side == 3) then
+			turtle.turnRight()
+		end
+	end
+
 	function alert(message)
 		rednet.open("right")
 		rednet.broadcast(message)
+	end
+
+	function report(order, side)
+		if (side == 0) then
+			oldx, oldy, oldz = gps.locate()
+			go(2)
+			newx, newy, newz = gps.locate()
+			go(0)
+
+			if not (oldx == newx) then
+				if (oldx < newx) then
+					sx = oldx - 1
+					sy = oldy
+					sz = oldz
+				end
+
+				if (oldx > newx) then
+					sx = oldx + 1
+					sy = oldy
+					sz = oldz
+				end
+			end
+
+			if not (oldz == newz) then
+				if (oldz < newz) then
+					sz = oldz - 1
+					sx = oldx
+					sy = oldy
+				end
+
+				if (oldz > newz) then
+					sz = oldz + 1
+					sx = oldx
+					sy = oldy
+				end
+			end
+		end
+
+		if (side == 4) then
+			sx, y, sz = gps.locate()
+			sy = y - 1
+		end
+
+		if (side == 5) then
+			sx, y, sz = gps.locate()
+			sy = y + 1
+		end
+
+		msg = reportmsg[order].."x:"..sx..", y:"..sy..", z:"..sz
+
+		for i = 1, table.getn(msghistory) do
+			if (msg == msghistory[i]) then
+				return false
+			end
+		end
+
+		table.insert(msghistory, msg)
+		alert(msg)
+	end
+
+	function dfs(side)
+		if side == 0 then			
+			for i = 1, 4 do
+				if (compare(0) == true) then
+					dig(0)
+					go(0)
+					
+					dfs(0)
+					dfs(4)
+					dfs(5)
+					
+					go(2)
+					place(0, isearch(fillblock))
+				end
+				turtle.turnLeft()
+			end
+		end
+		
+		if side == 4 then			
+			if (compare(4) == true) then
+				dig(4)
+				go(4)
+				
+				dfs(0)
+				dfs(4)
+				dfs(5)
+				
+				go(5)
+				place(4, isearch(fillblock))
+			end
+		end
+		
+		if side == 5 then			
+			if (compare(5) == true) then
+				dig(5)
+				go(5)
+				
+				dfs(0)
+				dfs(4)
+				dfs(5)
+				
+				go(4)
+				place(5, isearch(fillblock))
+			end
+		end
+	end
+
+	function compare(side)
+		if side == 0 then
+			success, data = turtle.inspect() --get block data
+			
+			if success then --compare block data
+				for i = 1, table.getn(fluid) do
+					if data.name == fluid[i] then
+						place(0, isearch(fillblock))
+					end
+				end
+
+				for i = 1, table.getn(special) do
+					if data.name == special[i] then
+						report(i, 0)
+						return "special"
+					end
+				end
+				
+				for i = 1, table.getn(mineral) do
+					if data.name == mineral[i] then
+						return true
+					end
+				end
+			else
+				return false
+			end
+			
+			return false
+		end
+		
+		if side == 4 then		
+			success, data = turtle.inspectUp() --get block data
+			
+			if success then --compare block data
+				for i = 1, table.getn(fluid) do
+					if data.name == fluid[i] then
+						place(4, isearch(fillblock))
+					end
+				end
+			
+				for i = 1, table.getn(special) do
+					if data.name == special[i] then
+						report(i, 4)
+						return "special"
+					end
+				end
+				
+				for i = 1, table.getn(mineral) do
+					if data.name == mineral[i] then
+						return true
+					end
+				end
+			else
+				return false
+			end
+			
+			return false
+		end
+		
+		if side == 5 then
+			success, data = turtle.inspectDown() --get block data
+			
+			if success then --compare block data
+				for i = 1, table.getn(fluid) do
+					if data.name == fluid[i] then
+						place(5, isearch(fillblock))
+					end
+				end
+				
+				for i = 1, table.getn(special) do
+					if data.name == special[i] then
+						report(i, 5)
+						return "special"
+					end
+				end
+				
+				for i = 1, table.getn(mineral) do
+					if data.name == mineral[i] then
+						return true
+					end
+				end
+			else
+				return false
+			end
+			
+			return false
+		end
 	end
 
 	function isearch(iname) --item search, item name
@@ -350,8 +386,6 @@
 			local data = turtle.getItemDetail(i)
 			if data then
 				if iname == data.name then
-					iname = "nil"
-					data = "nil"
 					return i
 				end
 			end
@@ -363,12 +397,12 @@
 for i = 1, 1 do
 	alert("Starting mining...")
 
-	for i = 1, times do
+	for i = 1, distance do
 		dig(0)
 		go(0)
 		dig(4)
 		dfs(0)
-		dfs(2)
+		dfs(5)
 	end
 
 	alert("Start backing...")
@@ -379,10 +413,10 @@ for i = 1, 1 do
 	place(5, isearch("minecraft:torch"))
 
 
-	for i = 1, hbtimes do
+	for i = 1, distance do
 		go(0)
 		dfs(0)
-		dfs(1)
+		dfs(4)
 	
 		if i%8 == 0 then
 			place(5, isearch("minecraft:torch"))
