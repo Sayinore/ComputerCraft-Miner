@@ -2,7 +2,7 @@
 Mine program with Depth-first search in ComputerCraft  
 
 
-#Requires
+#Requirement
 ##Mod version
 v1.64 or above
 
@@ -22,21 +22,27 @@ Open your turtle. Then use this command:
 
 
 #Personalization
-You may set your own settings, or use my RECOMMEND settings. Recommend settings are in the program. If you still want to replace them, just edit the following things:  
-`--REPLACE YOUR OWN SETTINGS HERE`  
-`distance =~~32~~`[Your settings here]   
-`fillblock = ~~"minecraft:cobblestone"~~`[Your settings here]  
-`--REPLACE YOUR OWN SETTINGS HERE`  
-They're all in the top of the program.
+You may set your own settings. Just edit the following things:  
+```lua
+--REPLACE YOUR OWN SETTINGS HERE  
+distance = [Your settings here]   
+fillingblock = [Your settings here]  
+--REPLACE YOUR OWN SETTINGS HERE
+```  
+They're all in the top of the program. Here's my recommend:  
+```lua
+--REPLACE YOUR OWN SETTINGS HERE  
+distance = 32  
+fillblock = "minecraft:cobblestone"  
+--REPLACE YOUR OWN SETTINGS HERE  
+```  
 
+#Branches
 
-#Branch
-
-| Name of Branch | Merit | Shortcoming | Remark |
-| :------------: | :-------------------------: | :-------------------: | :-------------: |
-| Master         | Don't need input xyz,facing | Need GPS servers      | Will update     |
-| SelfGPS        | Don't need GPS servers      | Need input xyz,facing | Will NOT update |
-
+|   Name of Branch   | Latest Version |              Merit               | Shortcoming               |       Remark        |
+| :----------------: | :------------: | :------------------------------: | ------------------------- | :-----------------: |
+| Master (RECOMMEND) |      v4.0      | Doesn't need to input xyz,facing | Needs a GPS culster       |   Will be updated   |
+|      Self-GPS      |      v3.0      |   Doesn't need any GPS things    | Needs to input xyz,facing | Will NOT be updated |
 
 #Changelog
 ##v4.0
@@ -46,6 +52,9 @@ They're all in the top of the program.
 
 ###Changed
 - Do NOT ask for distance, but you can set some settings by editing file
+
+###Added
+- Check in a message history before broading to the rednet. The same thing won't be reported twice
 
 ##v3.6
 2016-6-9
