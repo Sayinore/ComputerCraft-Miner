@@ -1,5 +1,5 @@
- #ComputerCraft-Miner
-Mine program with Depth-first search in ComputerCraft
+#ComputerCraft-Miner
+Mining program with Depth-first search in ComputerCraft
 
 #Features
 - Get all the minerals you can see in the mine road, and fill the air blocks with any block you want after digging mineral blocks
