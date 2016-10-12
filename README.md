@@ -6,7 +6,7 @@ Mining program with Depth-first search in ComputerCraft
 - Report the positions of special things (such as diamond ores, mob spawners, nether fortresses, abandoned mine shafts) to the host computer
 - Place torches in the mine road
 - Fill fluid blocks with any block you want
-- Simple but useful functions (err, I mean functions like "'function()'")
+- Simple but useful functions (err, I mean functions like "`function()`")
 
 #Requirement
 ##Mod version
@@ -25,28 +25,28 @@ v1.64 or above
 ##How to install:
 Open your turtle.
 If your mod version is 1.77 or above, then please use this command:
-'wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner'
-If it's not, please use the following command in lua mode:
-'io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()'
+`wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner`
+If it's not, please use the following command in lua mode:  
+`io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()`
 
 ##How to use:
 Place the mining turtle with this program, and then start this program.
 
 #Personalization
 You may set your own settings. Just edit the following things:
-'''lua
+```lua
 --REPLACE YOUR OWN SETTINGS HERE
 distance = [Your settings here]
 fillingblock = [Your settings here]
 --REPLACE YOUR OWN SETTINGS HERE
-'''
+```
 They're all in the top of the program. Here's my recommend:
-'''lua
+```lua
 --REPLACE YOUR OWN SETTINGS HERE
 distance = 32
 fillingblock = "minecraft:cobblestone"
 --REPLACE YOUR OWN SETTINGS HERE
-'''
+```
 
 #Screenshots
 ![A Screenshot](http://i1.buimg.com/4851/26fdb7b141881bc3.png "A Screenshot")
@@ -62,9 +62,9 @@ fillingblock = "minecraft:cobblestone"
 #Branches
 
 | Name of Branch | Latest Version | Merit | Shortcoming | Remark |
-| :----------------: | :------------: | :------------------------------: | ------------------------- | :-----------------: |
-| (RECOMMEND) Master | v4.0 | Doesn't need to input xyz, facing | Needs a GPS cluster | Will be updated |
-| Self-GPS | v3.0 | Doesn't need any GPS things | Needs to input xyz, facing | Will NOT be updated |
+| :----------------: | :------------: | :------------------------------: | ------------------------- | :----------------: |
+| (RECOMMEND) Master | v4.0 | Doesn't need to input xyz or facing | Needs a GPS cluster | Will update |
+| Self-GPS | v3.0 | Doesn't need any GPS things | Needs to input xyz or facing | Will NOT update |
 
 #Changelog
 ##v4.0
