@@ -29,17 +29,17 @@
 	}
 
 	local reportmsg = {
-		"Found diamond! See at ",
-		"Found emerald! See at ",
-		"Found monster spawner! See at ",
-		"Found abandoned mine shafts! See at ",
-		"Found abandoned mine shafts! See at ",
-		"Found nether fortresses! See at ",
-		"Found nether fortresses! See at ",
-		"Found nether fortresses! See at ",
-		"Found nether fortresses! See at ",
-		"Found nether fortresses! See at ",
-		"Found nether fortresses! See at ",
+		"Found a diamond! See at ",
+		"Found an emerald! See at ",
+		"Found a monster spawner! See at ",
+		"Found an abandoned mine shaft! See at ",
+		"Found an abandoned mine shaft! See at ",
+		"Found a nether fortress! See at ",
+		"Found a nether fortress! See at ",
+		"Found a nether fortress! See at ",
+		"Found a nether fortress! See at ",
+		"Found a nether fortress! See at ",
+		"Found a nether fortress! See at ",
 	}
 
 	local fluid = {
