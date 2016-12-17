@@ -13,40 +13,41 @@ Mining program with Depth-first search in ComputerCraft
 v1.64 or above
 
 ##Things in your map
-- A GPS cluster ([How to build a GPS cluster?][1])
-- (RECOMMEND) A wireless receiving computer
+- **(RECOMMEND)** A GPS cluster ([How to build a GPS cluster?][1])  
+  GPS clusters can help the miner to get its coordinates, so that **you do not need to input the coordinates or direction before going mining**. They are very **useful**.
+- **(RECOMMEND)** A wireless receiving computer
 
 ##Things in/on your mining turtle
 - A wireless modem
 - Fuels
-- Filling blocks
+- Blocks to fill with
+  The miner will fill the space with “Blocks to fill with” after digging the minerals.
 
 #Usage
-##How to install:
+##Installation
 Open your turtle.
 If your mod version is 1.77 or above, then please use this command:
-`wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner`
+```shell
+wget https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner
+```  
 If it's not, please use the following command in lua mode:  
-`io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()`
+```lua
+io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()
+```
 
-##How to use:
-Place the mining turtle with this program, and then start this program.
+##Usage
+Place the mining turtle with this program, and then start this program by inputing “miner”  
 
 #Personalization
 You may set your own settings. Just edit the following things:
-```lua
---REPLACE YOUR OWN SETTINGS HERE
-distance = [Your settings here]
-fillingblock = [Your settings here]
---REPLACE YOUR OWN SETTINGS HERE
-```
-They're all in the top of the program. Here's my recommend:
 ```lua
 --REPLACE YOUR OWN SETTINGS HERE
 distance = 32
 fillingblock = "minecraft:cobblestone"
 --REPLACE YOUR OWN SETTINGS HERE
 ```
+They're all in the top of the program. And they're my recommend.
+
 
 #Screenshots
 ![A Screenshot](http://i1.buimg.com/4851/26fdb7b141881bc3.png "A Screenshot")
@@ -59,14 +60,16 @@ fillingblock = "minecraft:cobblestone"
 ![A Screenshot](http://i1.buimg.com/4851/dd7722807ffbc03f.png "A Screenshot")
 ![A Screenshot](http://i1.buimg.com/4851/eb3e5b3dc29d02c3.png "A Screenshot")
 
-#Branches
-
-| Name of Branch | Latest Version | Merit | Shortcoming | Remark |
-| :----------------: | :------------: | :------------------------------: | ------------------------- | :----------------: |
-| (RECOMMEND) Master | v4.0 | Doesn't need to input xyz or facing | Needs a GPS cluster | Will update |
-| Self-GPS | v3.0 | Doesn't need any GPS things | Needs to input xyz or facing | Will NOT update |
-
 #Changelog
+##v4.1
+2016-12-16
+###Added
+- More Notes
+- An item-check before go mining
+
+###Changed
+- Merged the two branches (master and Self-GPS), then whether there is a gps cluster, the program can work
+
 ##v4.0
 2016-8-28
 ###Fixed
