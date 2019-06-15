@@ -1,30 +1,31 @@
-#ComputerCraft-Miner
+
+# ComputerCraft-Miner
 Mining program with Depth-first search in ComputerCraft
 
-#Features
+# Features
 - Get all the minerals you can see in the mine road, and fill the air blocks with any block you want after digging mineral blocks
 - Report the positions of special things (such as diamond ores, mob spawners, nether fortresses, abandoned mine shafts) to the host computer
 - Place torches in the mine road
 - Fill fluid blocks with any block you want
 - Simple but useful functions (err, I mean functions like "`function()`")
 
-#Requirement
-##Mod version
+# Requirement
+## Mod version
 v1.64 or above
 
-##Things in your map
+## Things in your map
 - **(RECOMMEND)** A GPS cluster ([How to build a GPS cluster?][1])  
   GPS clusters can help the miner to get its coordinates, so that **you do not need to input the coordinates or direction before going mining**. They are very **useful**.
 - **(RECOMMEND)** A wireless receiving computer
 
-##Things in/on your mining turtle
+## Things in/on your mining turtle
 - A wireless modem
 - Fuels
 - Blocks to fill with
   The miner will fill the space with “Blocks to fill with” after digging the minerals.
 
-#Usage
-##Installation
+# Usage
+## Installation
 Open your turtle.
 If your mod version is 1.77 or above, then please use this command:
 ```shell
@@ -35,10 +36,10 @@ If it's not, please use the following command in lua mode:
 io.open("miner", "a");io.output("miner");io.write(http.get("https://raw.githubusercontent.com/Sayinore/ComputerCraft-Miner/master/Miner.lua miner").readAll());io.close()
 ```
 
-##Usage
+## Usage
 Place the mining turtle with this program, and then start this program by inputing “miner”  
 
-#Personalization
+# Personalization
 You may set your own settings. Just edit the following things:
 ```lua
 --REPLACE YOUR OWN SETTINGS HERE
@@ -49,7 +50,7 @@ fillingblock = "minecraft:cobblestone"
 They're all in the top of the program. And they're my recommend.
 
 
-#Screenshots
+# Screenshots
 ![A Screenshot](http://i1.buimg.com/4851/26fdb7b141881bc3.png "A Screenshot")
 ![A Screenshot](http://i1.buimg.com/4851/9f82d50637a59c00.png "A Screenshot")
 ![A Screenshot](http://i1.buimg.com/4851/ca0c06d37d4dacf6.png "A Screenshot")
@@ -60,86 +61,86 @@ They're all in the top of the program. And they're my recommend.
 ![A Screenshot](http://i1.buimg.com/4851/dd7722807ffbc03f.png "A Screenshot")
 ![A Screenshot](http://i1.buimg.com/4851/eb3e5b3dc29d02c3.png "A Screenshot")
 
-#Changelog
-##v4.1
+# Changelog
+## v4.1
 2016-12-16
-###Added
+### Added
 - More Notes
 - An item-check before go mining
 
-###Changed
+### Changed
 - Merged the two branches (master and Self-GPS), then whether there is a gps cluster, the program can work
 
-##v4.0
+## v4.0
 2016-8-28
-###Fixed
+### Fixed
 - Bug: The miner does NOT report the position of the mineral block, BUT the position of itself
 
-###Changed
+### Changed
 - Do NOT ask for distance, but you can set some settings by editing file
 
-###Added
+### Added
 - Check in a message history before broadcasting to the red net. The same thing won't be reported twice
 
-##v3.6
+## v3.6
 2016-6-9
-###Added
+### Added
 - Distinguish
 - Abandoned mine shaft
 - Nether fortress
 - Fluid
 - Replace fluid blocks with cobblestone
 
-##v3.5
+## v3.5
 2016-6-3
-###Added
+### Added
 - Function isearch(), it can search any item in inventory of the turtle
 - Release memory
 
-###Fixed
+### Fixed
 - Bug: typo
 
-##v3.0 2016-5-29
-###Added
+## v3.0 2016-5-29
+### Added
 - GPS (Self-GPS and Outer-GPS)
 
-##v2.6
+## v2.6
 2016-5-28
-###Added
+### Added
 - Put cobblestone of the digged ore
 - Check special blocks
 
-##v2.5
+## v2.5
 2015-5-27
-###Changed
+### Changed
 - Optimize dfs(0)
 
-###Added
+### Added
 - Array Mineral
 
-###Removed
+### Removed
 - Array Poop
 
-##v2.0
+## v2.0
 2016-5-26
-###Changed
+### Changed
 - Putting block in the turtle to compare block now need NOT!
 
-##v1.1
+## v1.1
 2016-5-23
-###Fixed
+### Fixed
 - Can't search for ores behind the turtle
 - Program can't stop by itself
 
-###Added
+### Added
 - Tip before asking for distance
 
-##v1.0 [NOT RECOMMEND]
+## v1.0 [NOT RECOMMEND]
 2016-5-21
-###Added
+### Added
 - Depth-first search
 
-#License
+# License
 Using Apache License v2.0.
 See at [Open Source Initiative][2]
 
